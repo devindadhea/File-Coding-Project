@@ -76,28 +76,25 @@ homePrivate::create($validatedData);
             'name' => 'required',
             'greeting' => 'required',
             'description' => 'required',
-            'image' => 'nullable|mimes:png,jpg,jpeg',
+            'image' => 'required',
         ]);
 
+        
+
         $data = homePrivate::findOrFail($id);
+         // if ($request->file('image')) {
+        //     $validatedData['image'] = $request->file('image')->store('home-image');
+        // }
         $name = $request->name;
         $greeting = $request->greeting;
         $description = $request->description;
         $image = $request->image;
+       
 
         $data->name = $name;
         $data->greeting = $greeting;
         $data->description = $description;
-        
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $filename = date('Y-m-d').$image->getClientOriginalName();
-            $path = 'image-home/'.$filename;
-    
-            Storage::disk('public')->put($path, file_get_contents($image));
-            $data->image = $filename;
-        }
-
+        $data->image = $image;
         $home = $data->save();
         if ($home) {
             session()->flash('success', 'Home update successfully');
