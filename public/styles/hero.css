@@ -1,0 +1,57 @@
+/* Hero */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.hero-image .lottie {
+  width: 533px;
+  height: 460px;
+}
+.hero-typography {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+h1.hero-heading {
+  font-size: 3.5rem;
+  color: #7098d4;
+}
+p.hero-paragraph {
+  margin: 20px 0 40px;
+  font-size: 1rem;
+  line-height: 28px;
+  color: #353535;
+  max-width: 90%;
+}
+span.lorem {
+  display: block;
+}
+.hero-btn a,
+.class-btn,
+.testi-btn,
+.registration a,
+a.btnMoreReview {
+  background-color: #7098d4;
+  text-decoration: none;
+  padding: 12px 60px;
+  border: none;
+  border-radius: 25px;
+  color: #fff;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+.hero-btn a {
+  background-color: #7098d4;
+  border: 1px solid #7098d4;
+  margin-left: 10px;
+}
+.class-btn:hover,
+.testi-btn:hover,
+.registration a:hover,
+a.btnMoreReview:hover {
+  background-color: #7098d4;
+}
+
+/* Akhir dari hero section */
