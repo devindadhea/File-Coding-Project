@@ -9,13 +9,14 @@
   </ul>
 </main>
 <button type="submit" class="buttonAdd"><a href="/addDataProfile">Add Data</a></button>
-<table id="customers">
   <table id="customers">
     <tr>
       <th>ID</th>
       <th>Title</th>
       <th>Biodata</th>
+      <th>Image</th>
       <th>Aksi</th>
+      
     </tr>
     @foreach ($profiles as $profile)
 
@@ -23,7 +24,9 @@
       <td>{{$profile->id}}</td>
       <td>{{$profile->title}}</td>
       <td>{{$profile->biodata}}</td>
-
+      <td>
+        <img style="max-height: 100px" src="{{ asset('storage/'.$profile-> image) }}" alt="" />
+      </td>
       <td>
         <div class="crud-icons">
           <form method="POST" action="{{ route('profilePrivate.delete', $profile->id) }}">
@@ -45,4 +48,4 @@
   </table>
 
   @endsection
-</table>
+

@@ -72,31 +72,29 @@ homePrivate::create($validatedData);
      */
     public function update(Request $request, $id)
     {
+        // dd($request);
+        // return $request->file('image')->store('home-image');
         $validatedData = $request->validate([
             'name' => 'required',
             'greeting' => 'required',
             'description' => 'required',
-            'image' => 'required',
+            'image' => 'required|mimes:png,jpg,jpeg|max:1024',
         ]);
 
-        
-
         $data = homePrivate::findOrFail($id);
-         // if ($request->file('image')) {
-        //     $validatedData['image'] = $request->file('image')->store('home-image');
-        // }
-        $name = $request->name;
-        $greeting = $request->greeting;
-        $description = $request->description;
-        $image = $request->image;
-       
 
-        $data->name = $name;
-        $data->greeting = $greeting;
-        $data->description = $description;
-        $data->image = $image;
-        $home = $data->save();
-        if ($home) {
+        if ($request->file('image')) {
+            if ($request->oldImage) {
+            Storage::delete($request->oldImage);
+            }
+            $validatedData['image'] = $request->file('image')->store('home-image');
+        } else {
+            $validatedData['image'] = $data->image;
+        }
+
+        $data->update($validatedData);
+
+        if ($data) {
             session()->flash('success', 'Home update successfully');
             return redirect('/home-private');
         } else {

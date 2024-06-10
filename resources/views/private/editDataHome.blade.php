@@ -2,7 +2,7 @@
 
 <div class="section-add">
   <h2>Form Edit Data Home</h2>
-  <form class="form-add" method="POST" action="{{ route('editDataHome.update', $data->id) }}">
+  <form class="form-add" method="POST" action="{{ route('editDataHome.update', $data->id) }}" enctype="multipart/form-data">
     @csrf
     <input type="text" placeholder="Enter Name" name="name" value="{{$data->name}}" required />
 
@@ -11,6 +11,7 @@
     <input type="text" placeholder="Enter Description" name="description" value="{{$data->description}}" required />
 
     <div class="update-image">
+      <input type="hidden" name="oldImage" value="{{ $data->image}}" />
       <img style="max-height: 100px; display: block; margin-bottom: 10px" src="{{ asset('storage/'.$data-> image) }}" alt="home-image" />
 
       <input type="file" placeholder="Enter Image" name="image" value="{{$data->image}}" required />

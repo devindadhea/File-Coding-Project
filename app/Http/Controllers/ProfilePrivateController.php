@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\ProfilePrivate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
 
 class ProfilePrivateController extends Controller
 {
@@ -32,8 +34,12 @@ class ProfilePrivateController extends Controller
         $validatedData = $request->validate([
             'title' => 'required',
             'biodata' => 'required',
+            'image' => 'required|mimes:png,jpg,jpeg|max:2159',
         ]);
-    
+        if ($request->file('image')) {
+            $validatedData['image'] = $request->file('image')->store('home-image');
+        }
+        
         ProfilePrivate::create($validatedData);
     
         return redirect('/profile-private');
@@ -62,20 +68,34 @@ class ProfilePrivateController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $profiles = ProfilePrivate::findOrFail($id);
-        $title = $request->title;
-        $biodata = $request->biodata;
+        $validatedData = $request->validate([
+            'title' => 'required',
+            'biodata' => 'required',
+            'image' => 'required|mimes:png,jpg,jpeg|max:2159',
+        ]);
 
-        $profiles->title = $title;
-        $profiles->biodata = $biodata;
-        $profile = $profiles->save();
-        if ($profile) {
+        $data = ProfilePrivate::findOrFail($id);
+
+        if ($request->file('image')) {
+            if ($request->oldImage) {
+            Storage::delete($request->oldImage);
+            }
+            $validatedData['image'] = $request->file('image')->store('home-image');
+        } else {
+            $validatedData['image'] = $data->image;
+        }
+
+        $data->update($validatedData);
+
+        if ($data) {
             session()->flash('success', 'Profile update successfully');
             return redirect('/profile-private');
         } else {
             session()->flash('error', 'Some problem occure');
             return redirect(route('editDataProfile.edit'));
         }
+
+        
     }
 
     /**
