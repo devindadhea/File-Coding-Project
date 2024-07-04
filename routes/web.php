@@ -4,6 +4,7 @@ use App\Models\Home;
 use App\Http\Controllers\LinkFooter;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AndreController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
@@ -24,21 +25,29 @@ use App\Http\Controllers\LinkFooterPrivateController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/coba', function () {
+    return view('coba');
+});
 
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/home', [HomeController::class, 'index']);Route::get('/profile', [ProfileController::class, 'index']);
+Route::get('/home', [HomeController::class, 'index']);
+Route::get('/profile', [ProfileController::class, 'index']);
 
 Route::get('/about', function () {
     return view('about');
 });
-Route::get('/contact', [ContactController::class, 'index']);
 
+// contact
+// Route::get('/contact', [ContactController::class, 'index']);
+Route::get('/contact', [ContactController::class, 'showForm'])->name('contact.show');
+Route::post('/contact', [ContactController::class, 'sendEmail'])->name('contact.send');
+
+// footer
 Route::get('/linkfooter', [LinkFooter::class, 'index']);
 
-
-
+// login
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login-proses', [LoginController::class, 'login_proses'])->name('login-proses');
 
@@ -88,6 +97,9 @@ Route::post('/linkfooter-private/store', [LinkFooterPrivateController::class, 's
 Route::get('/editDataLinkFooter/{id}/edit', [LinkFooterPrivateController::class, 'edit'])->name('editDataLinkFooter.edit');
 Route::post('/editDataLinkFooter/{id}/update', [LinkFooterPrivateController::class, 'update'])->name('editDataLinkFooter.update');
 
+
+
+
 Route::get('/addDataHome', function () {
     return view('private/addDataHome');
 });
@@ -112,5 +124,6 @@ Route::get('/addDataFooter', function () {
 //  Route::get('/editDataHome', function () {
 //     return view('private/editDataHome');
 // });
+
 
 

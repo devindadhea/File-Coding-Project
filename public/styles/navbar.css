@@ -13,12 +13,6 @@ nav {
   z-index: 2;
 }
 
-/* Animasi sticky navbar */
-nav.sticky {
-  border-bottom: 1.5px solid #2447f9;
-  background-color: white;
-}
-
 .nav-logo h3 {
   font-weight: 700;
   font-size: 22px;

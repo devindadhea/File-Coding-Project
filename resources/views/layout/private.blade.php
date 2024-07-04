@@ -33,8 +33,9 @@
         </li>
       </ul>
     </section>
-    <!-- SIDEBAR -->
+    <!-- END SIDEBAR -->
 
+<!-- NAVBAR -->
     <section id="content">
       <nav>
         <form action="#">
@@ -60,7 +61,7 @@
           </ul>
         </div>
       </nav>
-      <!-- NAVBAR -->
+      
 
     
     
@@ -68,6 +69,7 @@
         @yield('container')
     </div>
 </section>
+<!-- END NAVBAR -->
 
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script src="/script.js"></script>

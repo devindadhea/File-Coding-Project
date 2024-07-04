@@ -13,14 +13,10 @@ class LoginController extends Controller
 
     public function login_proses(Request $request){
         $request->validate([
-            'email' => 'required',
-            'password'=>'required',
+            'email' => ['required', 'email'],
+            'password'=>['required'],
         ]);
-        $data =[
-            'email' => $request->email,
-            'password' => $request->password
-        ];
-        if(Auth::attempt($data)){
+        if(Auth::attempt($request->only('email', 'password'))){
             return redirect()->route('dashboard-private');
         }else{
             return redirect()->route('login')->with('failed','email or password failed');

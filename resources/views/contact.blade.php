@@ -8,24 +8,43 @@
   <div class="form-wrapper">
     <div class="form-input">
       <h3>Send Message</h3>
-      <form autocomplete="off" class="form-contact">
+      @if(Session::has('success'))
+      <div class="alert alert-success">
+        {{ Session::get('success') }}
+      </div>
+      @endif
+      <form  action="{{ route('contact.send') }}" method="POST">
+        @csrf
         <div class="inputBox">
-          <input class="contact-name" type="text" required />
+          <input class="contact-name" type="text" required id="name" name="name" />
           <span>Full name</span>
         </div>
+        @error('name')
+        <span>{{ $message}}</span>
+        @enderror
+
         <div class="inputBox">
-          <input class="contact-email" type="text" required />
+          <input class="contact-email" type="email" required id="email" name="email" />
           <span>Email</span>
         </div>
+        @error('email')
+        <span>{{ $message}}</span>
+        @enderror
+
         <div class="inputBox">
-          <textarea class="contact-msg" required></textarea>
+          <textarea class="contact-msg" required id="message" name="message"></textarea>
           <span>Write message</span>
         </div>
+        @error('message')
+        <span>{{ $message}}</span>
+        @enderror
+
         <div class="inputBox">
           <input type="submit" value="Send" />
         </div>
       </form>
     </div>
+
     <div class="form-info">
       @foreach ($contacts as $contact)
       <div class="info-box">
@@ -55,4 +74,5 @@
   </div>
 </section>
 <!-- Akhir dari form section -->
+
 @endsection

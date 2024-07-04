@@ -12,10 +12,8 @@
     </p>
   </div>
 </div>
-@endforeach
-
-<div class="hero-btn cv">
-  <a href="#class">Download CV</a>
+<div class=" cv">
+  <a class="btn-download" href="#"><button id="downloadButton">Download CV</button></a>
 </div>
-
-@endsection
+<!-- <button id="downloadButton">Download PDF</button> -->
+@endforeach @endsection

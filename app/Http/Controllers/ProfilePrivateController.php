@@ -18,17 +18,6 @@ class ProfilePrivateController extends Controller
         return view ('private/profilePrivate', compact('profiles'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $validatedData = $request->validate([
@@ -45,17 +34,6 @@ class ProfilePrivateController extends Controller
         return redirect('/profile-private');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(ProfilePrivate $profilePrivate)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit($id)
     {
         $profiles = ProfilePrivate::findOrFail($id);
@@ -63,9 +41,6 @@ class ProfilePrivateController extends Controller
         return view('private/editDataProfile', compact('profiles'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
@@ -98,13 +73,6 @@ class ProfilePrivateController extends Controller
         
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(ProfilePrivate $profilePrivate)
-    {
-        
-    }
     public function deleteData($id){
         $profilePrivate = ProfilePrivate::findOrFail($id);
         $profilePrivate->delete();

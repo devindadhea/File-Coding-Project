@@ -28,7 +28,19 @@ p.hero-paragraph {
 span.lorem {
   display: block;
 }
+
+#downloadButton {
+  background: none;
+  border: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  padding: 0;
+}
+
 .hero-btn a,
+.btn-download,
 .class-btn,
 .testi-btn,
 .registration a,

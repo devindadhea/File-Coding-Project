@@ -12,7 +12,6 @@
         <input type="text" placeholder="Enter Name" name="name" required />
       </div>
 
-      
 
       <div class="form-group">
         <label for="psw"><b>Greeting</b></label>

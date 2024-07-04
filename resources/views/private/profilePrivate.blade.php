@@ -16,10 +16,8 @@
       <th>Biodata</th>
       <th>Image</th>
       <th>Aksi</th>
-      
     </tr>
     @foreach ($profiles as $profile)
-
     <tr>
       <td>{{$profile->id}}</td>
       <td>{{$profile->title}}</td>
@@ -43,9 +41,7 @@
         </div>
       </td>
     </tr>
-
     @endforeach
   </table>
-
   @endsection
 

@@ -7,7 +7,6 @@
       <h3 class="lorem">Hello i'm</h3>
       @foreach ($homes as $home)
       <h1 class="hero-heading">{{ $home->name }}</h1>
-
       <p class="hero-paragraph">{{ $home->description }}</p>
 
       @endforeach

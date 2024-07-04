@@ -126,21 +126,18 @@ html {
 
 /* profile style */
 
-.body {
-  background-color: #7098d4;
-}
-
 .left-section img {
   width: 500px;
 }
 .profile-title {
   margin: 30px 0 -0px 620px;
+  margin-bottom: -40px;
   color: #7098d4;
 }
 
 .flex-profile {
   display: flex;
-  margin: 0px 90px 30px 90px;
+  margin: 0px 90px 0 90px;
   gap: 30px;
 }
 
@@ -151,4 +148,3 @@ html {
   margin-left: 600px;
 }
 
-/*  */

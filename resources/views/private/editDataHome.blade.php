@@ -21,16 +21,7 @@
       </small>
       @enderror
     </div>
-
-    <!-- <div class="form-group">
-      <label for="image"><b>Image</b></label>
-      <input type="file" placeholder="Enter Image" name="image" id="image"  required />
-      @error('image')
-      <small>{{ $message }}</small>
-      @enderror
-    </div> -->
-
-    <button type="submit" class="submit">Update</button>
+  <button type="submit" class="submit">Update</button>
 
     <div class="container" style="background-color: #f1f1f1">
       <button type="button" class="cancelbtn">Cancel</button>

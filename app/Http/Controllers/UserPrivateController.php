@@ -7,26 +7,12 @@ use Illuminate\Http\Request;
 
 class UserPrivateController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $users = UserPrivate::all();
         return view ('private/userPrivate', compact('users'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $validatedData = $request->validate([
@@ -39,26 +25,12 @@ class UserPrivateController extends Controller
         return redirect('/user-private');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(UserPrivate $userPrivate)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit($id)
     {
         $users = UserPrivate::findOrFail($id);
         return view('private/editDataUser', compact('users'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, $id)
     {
         $users = UserPrivate::findOrFail($id);
@@ -77,17 +49,10 @@ class UserPrivateController extends Controller
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(UserPrivate $userPrivate)
-    {
-        //
-    }
     public function deleteData($id){
         $userPrivate = UserPrivate::findOrFail($id);
         $userPrivate->delete();
 
-        return redirect('/user-private');
+        return redirect('/user-private')->with('success', 'User deleted successfully');
 }
 }
