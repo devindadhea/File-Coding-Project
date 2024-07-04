@@ -11,7 +11,7 @@
 
       @endforeach
       <div class="hero-btn">
-        <a href="#class">Hire me!</a>
+        <a href="/contact">Hire me!</a>
       </div>
     </div>
     <div class="hero-image">
